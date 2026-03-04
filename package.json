@@ -1,0 +1,20 @@
+{
+  "name": "shorter_url",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --env-file=.env --env-file=.env.local src",
+    "start": "node --env-file=.env --env-file=.env.local src",
+    "db:migrate": "node --env-file=.env --env-file=.env.local scripts/migrate-up",
+    "db:rollback": "node --env-file=.env --env-file=.env.local scripts/migrate-down",
+    "db:create": "node scripts/create-migration"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "slonik": "^48.12.1"
+  }
+}
