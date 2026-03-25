@@ -1,16 +1,14 @@
 const { API_URL } = require("../../misc/constants");
 const { getError, ErrorsIndex } = require("../../misc/errors");
-const { genToken } = require("../../misc/utils");
-const { saveUrls } = require("../../models/url");
+const { genToken } = require("../../utils");
 
 module.exports = (db) => async (req, res, next) => {
   const { url } = req.body;
 
-  if (!url) return next(getError(ErrorsIndex.INFO_NEEDED));
-
   const token = genToken();
 
-  const response = await saveUrls(db)(url, token);
+  const { saveUrls } = require("../../models/url")(db);
+  const response = await saveUrls(url, token);
 
   if (!response.ok) return next(getError(response.errorType));
 
