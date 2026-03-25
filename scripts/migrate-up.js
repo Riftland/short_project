@@ -7,7 +7,7 @@ const migrationsPath = path.join(__dirname, "../migrations");
 
 const createControl = sql.unsafe`
   CREATE TABLE IF NOT EXISTS migrations (
-    id VARCHAR(50) PRIMARY KEY,
+    id TEXT PRIMARY KEY,
     created_at TIMESTAMP DEFAULT NOW()
   );
 `;
