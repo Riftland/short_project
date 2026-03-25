@@ -7,6 +7,14 @@ const insertUrls = (origin, destination) => {
   `;
 };
 
+const selectUrl = (id) => {
+  return sql.unsafe`
+    SELECT origin FROM urls
+    WHERE destination LIKE ${id};
+  `;
+};
+
 module.exports = {
   insertUrls,
+  selectUrl,
 };
