@@ -25,3 +25,6 @@ jobs:
         run: node scripts/migrate-up
         env:
           DB_URL: ${{ secrets.DB_URL }}
+
+      - name: Deploy on Render (staging)
+        run: curl ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
