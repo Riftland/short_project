@@ -1,6 +1,6 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
-const { API_PORT } = require("./misc/constants");
+const { PORT } = require("./misc/constants");
 const db = require("./config/db");
 const routes = require("./routes");
 const { getError, ErrorsIndex } = require("./misc/errors");
@@ -23,6 +23,6 @@ app.use(exception, ({ statusCode, error }, req, res, next) => {
   });
 });
 
-app.listen(API_PORT, () => {
-  console.log(`> [:${API_PORT}] Server listening 🚀`);
+app.listen(PORT, () => {
+  console.log(`> [:${PORT}] Server listening 🚀`);
 });
