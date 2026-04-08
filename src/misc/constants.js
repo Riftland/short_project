@@ -1,3 +1,5 @@
+const { isSecure } = require("../utils");
+
 const PORT = process.env.PORT;
 const DB_URL = process.env.DB_URL;
 const API_URL = process.env.API_URL;
@@ -16,7 +18,7 @@ const DataFields = {
 module.exports = {
   PORT,
   DB_URL,
-  API_URL: `${API_URL}:${PORT}`,
+  API_URL: isSecure(API_URL) ? API_URL : `${API_URL}:${PORT}`,
   JWT_SECRET,
   DEFAULT_COOKIE_NAME,
   DEFAULT_EXP_TIME,

@@ -1,4 +1,9 @@
-const { DEFAULT_COOKIE_NAME, DEFAULT_EXP_TIME } = require("../misc/constants");
+const { isSecure } = require(".");
+const {
+  DEFAULT_COOKIE_NAME,
+  DEFAULT_EXP_TIME,
+  API_URL,
+} = require("../misc/constants");
 
 const create =
   (res) =>
@@ -6,7 +11,7 @@ const create =
     res.cookie(name, token, {
       expires: new Date(Date.now() + exp),
       httpOnly: true,
-      secure: false, // https -> true
+      secure: isSecure(API_URL),
     });
   };
 
