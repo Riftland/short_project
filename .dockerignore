@@ -1,0 +1,9 @@
+.github
+migrations
+node_modules
+scripts
+
+.env
+.env.*
+.gitignore
+docker-compose.yml
