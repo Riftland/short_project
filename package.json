@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon --env-file=.env --env-file=.env.local src",
-    "start": "node --env-file=.env --env-file=.env.local src",
+    "start": "node src",
     "db:migrate": "node --env-file=.env --env-file=.env.local scripts/migrate-up",
     "db:rollback": "node --env-file=.env --env-file=.env.local scripts/migrate-down",
     "db:create": "node scripts/create-migration"
