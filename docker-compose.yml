@@ -8,6 +8,19 @@ services:
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: db
 
+  api:
+    image: api
+    pull_policy: never
+    depends_on:
+      - db
+    ports:
+      - 4000:4000
+    environment:
+      PORT: 4000
+      API_URL: http://localhost
+      DB_URL: postgresql://user:1234@db:5432/db
+      JWT_SECRET: "super_mega_secret_key"
+
   admin:
     image: adminer
     ports:
