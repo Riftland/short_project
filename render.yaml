@@ -1,0 +1,14 @@
+version: "1"
+projects:
+  - name: My project
+    environments:
+      - name: staging
+        services:
+          - type: web
+            name: backend-api-dev
+            runtime: docker
+            repo: https://github.com/Riftland/short_project
+            plan: free
+            region: frankfurt
+            autoDeployTrigger: "off"
+
