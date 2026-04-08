@@ -1,7 +1,7 @@
 name: Rollback on dev (staging)
 
 on:
-  workflow-dispatch:
+  workflow_dispatch:
 
 jobs:
   rollback:
