@@ -1,0 +1,25 @@
+name: Deploy on dev (production)
+
+on:
+  push: 
+    branches: ["release/*"]
+
+jobs:
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+
+      # - name: Install dependencies
+      #   run: yarn install
+
+      - name: Deploy on Render (production)
+        run: curl ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
