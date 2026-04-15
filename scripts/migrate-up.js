@@ -23,6 +23,8 @@ const updateControl = (id) => sql.unsafe`
 
 (async () => {
   try {
+    let [, , migrations = -1] = process.argv;
+
     const migrationsDir = await fs.readdir(migrationsPath);
     if (!migrationsDir.length) throw Error("No migration files found");
 
@@ -37,6 +39,10 @@ const updateControl = (id) => sql.unsafe`
         console.log(`> file ${file} migrated, skipping...`);
         continue;
       }
+
+      if (!migrations) return;
+      if (migrations > 0) migrations--;
+
       const { up } = require(path.join(migrationsPath, file));
       await connection.query(up);
       await connection.query(updateControl(file));

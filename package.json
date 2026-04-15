@@ -8,6 +8,7 @@
     "start": "node src",
     "db:migrate": "node --env-file=.env --env-file=.env.local scripts/migrate-up",
     "db:rollback": "node --env-file=.env --env-file=.env.local scripts/migrate-down",
+    "db:info": "node --env-file=.env --env-file=.env.local scripts/migrations-info",
     "db:create": "node scripts/create-migration"
   },
   "devDependencies": {
