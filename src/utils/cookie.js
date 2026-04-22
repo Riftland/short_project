@@ -1,4 +1,4 @@
-const { isSecure } = require(".");
+const { isSecure } = require("./common");
 const {
   DEFAULT_COOKIE_NAME,
   DEFAULT_EXP_TIME,
@@ -8,11 +8,15 @@ const {
 const create =
   (res) =>
   (token, name = DEFAULT_COOKIE_NAME, exp = DEFAULT_EXP_TIME) => {
-    res.cookie(name, token, {
-      expires: new Date(Date.now() + exp),
-      httpOnly: true,
-      secure: isSecure(API_URL),
-    });
+    try {
+      res.cookie(name, token, {
+        expires: new Date(Date.now() + exp),
+        httpOnly: true,
+        secure: isSecure(API_URL),
+      });
+    } catch (error) {
+      console.log("> error [create cookie]", error.message);
+    }
   };
 
 const destroy = (res, name = DEFAULT_COOKIE_NAME) => {

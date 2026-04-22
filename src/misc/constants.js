@@ -1,4 +1,4 @@
-const { isSecure } = require("../utils");
+const { isSecure } = require("../utils/common");
 
 const PORT = process.env.PORT;
 const DB_URL = process.env.DB_URL;

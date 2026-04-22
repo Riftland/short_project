@@ -33,10 +33,6 @@ const deserialize = (req) => {
   return rest;
 };
 
-const isSecure = (url) => {
-  return !!url?.includes("https");
-};
-
 module.exports = {
   genToken,
   ...require("./hash"),
@@ -45,5 +41,4 @@ module.exports = {
   serialize,
   deserialize,
   catcher,
-  isSecure,
 };

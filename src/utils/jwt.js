@@ -3,7 +3,9 @@ const { JWT_SECRET } = require("../misc/constants");
 
 const sign = (payload) => {
   try {
-    return jwt.sign(payload, JWT_SECRET, { expiresIn: "1h" });
+    return jwt.sign(payload, JWT_SECRET, {
+      expiresIn: "1h",
+    });
   } catch (error) {
     console.log("> error [sign jwt]:", error.message);
     return null;
